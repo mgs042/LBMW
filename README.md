@@ -1,5 +1,5 @@
 # trash_dash
-# Location-Based Garbage Management System
+# Location-Based Garbage Management System(under development)
 
 This is a location-based garbage management system built using Flutter. The system uses the device's location data to determine the areas that need garbage collection services and helps customers to book the services.
 
