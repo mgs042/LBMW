@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trash_dash/screens/register_screen.dart';
 import 'package:trash_dash/widgets/custom_button.dart';
+import 'package:provider/provider.dart';
+import 'package:trash_dash/provider/auth_provider.dart';
+import 'package:trash_dash/screens/home_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -12,6 +15,7 @@ class WelcomeScreen extends StatefulWidget {
 class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
       body: SafeArea(
         child: Center(
@@ -55,12 +59,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     padding: EdgeInsets.only(top: 16.0),
                     child: CustomButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const RegisterScreen(),
-                          ),
-                        );
+                        ap.isSignedIn ==
+                                true //when true then fetch shared preference data
+                            ? Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeScreen(),
+                                ),
+                              )
+                            : Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const RegisterScreen(),
+                                ),
+                              );
                       },
                       text: "Get started",
                     ),
