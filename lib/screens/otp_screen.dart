@@ -139,7 +139,7 @@ class _OtpScreenState extends State<OtpScreen> {
                             color: Color.fromARGB(255, 207, 6, 6),
                           ),
                         ),
-                        onSubmitted: (value) {
+                        onCompleted: (value) {
                           setState(() {
                             otpCode = value;
                           });
