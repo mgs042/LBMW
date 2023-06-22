@@ -1,7 +1,10 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'package:provider/provider.dart';
+import 'package:trash_dash/model/user_model.dart';
+import '../provider/auth_provider.dart';
+import '../utils/utils.dart';
 import '../widgets/custom_button.dart';
 
 class UserInformationScreen extends StatefulWidget {
@@ -25,6 +28,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
     addressController.dispose();
   }
 
+//for selecting image
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +64,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                     children: [
                       //name field
                       textField(
-                        hintText: "John Smith",
+                        hintText: "Enter your name",
                         icon: CupertinoIcons.person_circle,
                         inputType: TextInputType.name,
                         maxLines: 1,
@@ -68,7 +72,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                       ),
                       //email
                       textField(
-                        hintText: "abc@example.com",
+                        hintText: "Enter your email",
                         icon: CupertinoIcons.mail,
                         inputType: TextInputType.emailAddress,
                         maxLines: 1,
@@ -88,8 +92,11 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                 const SizedBox(height: 20),
                 SizedBox(
                   height: 50,
-                  width: MediaQuery.of(context).size.width * 0.80,
-                  child: CustomButton(text: "Continue", onPressed: () {}),
+                  width: MediaQuery.of(context).size.width * 0.90,
+                  child: CustomButton(
+                    text: "Continue",
+                    onPressed: () => storeData(),
+                  ),
                 ),
               ],
             ),
@@ -156,5 +163,24 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
         ],
       ),
     );
+  }
+
+//store user data to database
+
+  void storeData() async {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
+    UserModel userModel = UserModel(
+      name: nameController.text.trim(),
+      email: emailController.text.trim(),
+      address: addressController.text.trim(),
+      profilePic: "",
+      createdAt: "",
+      phoneNumber: "",
+      uid: "",
+    );
+    if (image != null) {
+    } else {
+      showSnackBar(context, "Please upload your profile photo");
+    }
   }
 }
