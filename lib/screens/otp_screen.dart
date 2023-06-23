@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
+import 'package:trash_dash/screens/home_screen.dart';
 import 'package:trash_dash/screens/user_information_screen.dart';
 import 'package:trash_dash/utils/utils.dart';
 import 'package:trash_dash/widgets/custom_button.dart';
@@ -199,6 +200,18 @@ class _OtpScreenState extends State<OtpScreen> {
           (value) async {
             if (value == true) {
               //user exists in our app
+              ap.getDataFromFirestore().then(
+                    (value) => ap.saveUserDataToSP().then(
+                          (value) => ap.setSignIn().then(
+                                (value) => Navigator.pushAndRemoveUntil(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomeScreen()),
+                                    (route) => false),
+                              ),
+                        ),
+                  );
             } else {
               //new user
               Navigator.pushAndRemoveUntil(

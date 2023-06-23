@@ -58,21 +58,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   child: Padding(
                     padding: EdgeInsets.only(top: 16.0),
                     child: CustomButton(
-                      onPressed: () {
-                        ap.isSignedIn ==
-                                true //when true then fetch shared preference data
-                            ? Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomeScreen(),
-                                ),
-                              )
-                            : Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const RegisterScreen(),
+                      onPressed: () async {
+                        //when true then fetch shared preference data
+                        if (ap.isSignedIn == true) {
+                          await ap.getDataFromSP().whenComplete(
+                                () => Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const HomeScreen(),
+                                  ),
                                 ),
                               );
+                        } else {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RegisterScreen(),
+                            ),
+                          );
+                        }
                       },
                       text: "Get started",
                     ),

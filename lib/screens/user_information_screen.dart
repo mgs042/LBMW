@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:trash_dash/model/user_model.dart';
+import 'package:trash_dash/screens/home_screen.dart';
 import '../provider/auth_provider.dart';
 import '../utils/utils.dart';
 import '../widgets/custom_button.dart';
@@ -29,79 +30,93 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
   }
 
 //for selecting image
+  void selectImage() async {
+    image = await pickImage(context);
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isLoading =
+        Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
-          child: Center(
-            child: Column(
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: image == null
-                      ? const CircleAvatar(
-                          backgroundColor: Colors.green,
-                          radius: 50,
-                          child: Icon(
-                            CupertinoIcons.person_circle,
-                            size: 50,
-                            color: Colors.white,
-                          ),
-                        )
-                      : CircleAvatar(
-                          backgroundImage: FileImage(image!),
-                          radius: 50,
-                        ),
+        child: isLoading == true
+            ? const Center(
+                child: CircularProgressIndicator(
+                  color: Color.fromARGB(255, 74, 189, 78),
                 ),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-                  margin: const EdgeInsets.only(top: 20),
+              )
+            : SingleChildScrollView(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 25.0, horizontal: 5.0),
+                child: Center(
                   child: Column(
                     children: [
-                      //name field
-                      textField(
-                        hintText: "Enter your name",
-                        icon: CupertinoIcons.person_circle,
-                        inputType: TextInputType.name,
-                        maxLines: 1,
-                        controller: nameController,
+                      InkWell(
+                        onTap: () => selectImage(),
+                        child: image == null
+                            ? const CircleAvatar(
+                                backgroundColor: Colors.green,
+                                radius: 50,
+                                child: Icon(
+                                  CupertinoIcons.person_circle,
+                                  size: 50,
+                                  color: Colors.white,
+                                ),
+                              )
+                            : CircleAvatar(
+                                backgroundImage: FileImage(image!),
+                                radius: 50,
+                              ),
                       ),
-                      //email
-                      textField(
-                        hintText: "Enter your email",
-                        icon: CupertinoIcons.mail,
-                        inputType: TextInputType.emailAddress,
-                        maxLines: 1,
-                        controller: emailController,
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 5, horizontal: 15),
+                        margin: const EdgeInsets.only(top: 20),
+                        child: Column(
+                          children: [
+                            //name field
+                            textField(
+                              hintText: "Enter your name",
+                              icon: CupertinoIcons.person_circle,
+                              inputType: TextInputType.name,
+                              maxLines: 1,
+                              controller: nameController,
+                            ),
+                            //email
+                            textField(
+                              hintText: "Enter your email",
+                              icon: CupertinoIcons.mail,
+                              inputType: TextInputType.emailAddress,
+                              maxLines: 1,
+                              controller: emailController,
+                            ),
+                            //address
+                            textField(
+                              hintText: "Enter your address",
+                              icon: CupertinoIcons.location,
+                              inputType: TextInputType.streetAddress,
+                              maxLines: 4,
+                              controller: addressController,
+                            ),
+                          ],
+                        ),
                       ),
-                      //address
-                      textField(
-                        hintText: "Enter your address",
-                        icon: CupertinoIcons.location,
-                        inputType: TextInputType.streetAddress,
-                        maxLines: 4,
-                        controller: addressController,
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width * 0.90,
+                        child: CustomButton(
+                          text: "Continue",
+                          onPressed: () => storeData(),
+                        ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
-                SizedBox(
-                  height: 50,
-                  width: MediaQuery.of(context).size.width * 0.90,
-                  child: CustomButton(
-                    text: "Continue",
-                    onPressed: () => storeData(),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
+              ),
       ),
     );
   }
@@ -179,6 +194,23 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
       uid: "",
     );
     if (image != null) {
+      ap.saveUserDataToFirebase(
+        context: context,
+        userModel: userModel,
+        profilePic: image!,
+        onSuccess: () {
+          //once data is saved we need to store it locally also
+          ap.saveUserDataToSP().then(
+                (value) => ap.setSignIn().then(
+                      (value) => Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomeScreen()),
+                          (route) => false),
+                    ),
+              );
+        },
+      );
     } else {
       showSnackBar(context, "Please upload your profile photo");
     }
