@@ -44,7 +44,10 @@ dependencies:
   cloud_firestore: ^4.7.0
   image_picker: ^0.8.9
   firebase_storage: ^11.2.3
+  google_maps_flutter: ^2.0.9
+  location: ^4.3.0
   font_awesome_flutter: ^10.4.0
+  geocoding: ^2.0.0
 
 
 dev_dependencies:

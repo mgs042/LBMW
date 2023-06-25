@@ -4,9 +4,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:trash_dash/model/user_model.dart';
 import 'package:trash_dash/screens/home_screen.dart';
-import '../provider/auth_provider.dart';
-import '../utils/utils.dart';
-import '../widgets/custom_button.dart';
+import 'package:trash_dash/screens/map_screen.dart';
+import 'package:trash_dash/provider/auth_provider.dart';
+import 'package:trash_dash/utils/utils.dart';
+import 'package:trash_dash/widgets/custom_button.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class UserInformationScreen extends StatefulWidget {
   const UserInformationScreen({Key? key}) : super(key: key);
@@ -20,6 +23,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
   final nameController = TextEditingController();
   final emailController = TextEditingController();
   final addressController = TextEditingController();
+  LatLng? _selectedLocation;
 
   @override
   void dispose() {
@@ -29,10 +33,47 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
     addressController.dispose();
   }
 
-//for selecting image
+  // For selecting image
   void selectImage() async {
     image = await pickImage(context);
     setState(() {});
+  }
+
+  // Open the map screen to select location
+  void openMapScreen() async {
+    final selectedLocation = await Navigator.push<LatLng>(
+      context,
+      MaterialPageRoute(builder: (context) => MapScreen()),
+    );
+
+    if (selectedLocation != null) {
+      setState(() {
+        _selectedLocation = selectedLocation;
+        // Reverse geocode the selected location to get the address
+        _updateAddressFromLocation();
+      });
+    }
+  }
+
+  // Reverse geocode the selected location to get the address
+  void _updateAddressFromLocation() async {
+    try {
+      final addresses = await placemarkFromCoordinates(
+        _selectedLocation!.latitude,
+        _selectedLocation!.longitude,
+        localeIdentifier:
+            'en_US', // Specify the desired language for the address
+      );
+
+      if (addresses.isNotEmpty) {
+        final address = addresses.first;
+        final formattedAddress =
+            "${address.street}, ${address.locality}, ${address.country}";
+        addressController.text = formattedAddress;
+      }
+    } catch (e) {
+      print('Error updating address: $e');
+    }
   }
 
   @override
@@ -77,7 +118,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                         margin: const EdgeInsets.only(top: 20),
                         child: Column(
                           children: [
-                            //name field
+                            // Name field
                             textField(
                               hintText: "Enter your name",
                               icon: CupertinoIcons.person_circle,
@@ -85,7 +126,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                               maxLines: 1,
                               controller: nameController,
                             ),
-                            //email
+                            // Email
                             textField(
                               hintText: "Enter your email",
                               icon: CupertinoIcons.mail,
@@ -93,13 +134,18 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                               maxLines: 1,
                               controller: emailController,
                             ),
-                            //address
+                            // Address
                             textField(
                               hintText: "Enter your address",
                               icon: CupertinoIcons.location,
                               inputType: TextInputType.streetAddress,
                               maxLines: 4,
                               controller: addressController,
+                              enabled: true, // Enable editing of address field
+                              suffixIcon: IconButton(
+                                icon: Icon(Icons.map),
+                                onPressed: openMapScreen,
+                              ),
                             ),
                           ],
                         ),
@@ -127,6 +173,8 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
     required TextInputType inputType,
     required int maxLines,
     required TextEditingController controller,
+    bool enabled = true,
+    Widget? suffixIcon,
   }) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
@@ -137,6 +185,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
             controller: controller,
             keyboardType: inputType,
             maxLines: maxLines,
+            enabled: enabled,
             decoration: InputDecoration(
               contentPadding: const EdgeInsets.fromLTRB(40, 10, 15, 10),
               hintText: hintText,
@@ -153,6 +202,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                   color: Colors.green,
                 ),
               ),
+              suffixIcon: suffixIcon,
             ),
           ),
           Positioned(
@@ -180,33 +230,36 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
     );
   }
 
-//store user data to database
-
+  // Store user data to the database
   void storeData() async {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     UserModel userModel = UserModel(
-      name: nameController.text.trim(),
-      email: emailController.text.trim(),
-      address: addressController.text.trim(),
-      profilePic: "",
-      createdAt: "",
-      phoneNumber: "",
-      uid: "",
-    );
+        name: nameController.text.trim(),
+        email: emailController.text.trim(),
+        address: addressController.text.trim(),
+        profilePic: "",
+        createdAt: "",
+        phoneNumber: "",
+        uid: "",
+        latitude: _selectedLocation!.latitude,
+        longitude: _selectedLocation!.longitude);
+
     if (image != null) {
+      // Save user data to Firebase
       ap.saveUserDataToFirebase(
         context: context,
         userModel: userModel,
         profilePic: image!,
         onSuccess: () {
-          //once data is saved we need to store it locally also
+          // Once data is saved, store it locally
           ap.saveUserDataToSP().then(
                 (value) => ap.setSignIn().then(
                       (value) => Navigator.pushAndRemoveUntil(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomeScreen()),
-                          (route) => false),
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomeScreen()),
+                        (route) => false,
+                      ),
                     ),
               );
         },

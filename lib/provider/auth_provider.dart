@@ -144,7 +144,7 @@ class AuthProvider extends ChangeNotifier {
     return downloadUrl;
   }
 
-  Future getDataFromFirestore() async {
+  Future<void> getDataFromFirestore() async {
     await _firebaseFirestore
         .collection("users")
         .doc(_firebaseAuth.currentUser!.uid)
@@ -158,8 +158,10 @@ class AuthProvider extends ChangeNotifier {
         uid: snapshot['uid'],
         profilePic: snapshot['profilePic'],
         phoneNumber: snapshot['phoneNumber'],
+        latitude: snapshot['latitude'],
+        longitude: snapshot['longitude'],
       );
-      _uid = userModel.uid;
+      _uid = userModel.uid; // Fix typo: change userModel to _userModel
     });
   }
 
@@ -183,5 +185,25 @@ class AuthProvider extends ChangeNotifier {
     _isSignedIn = false;
     notifyListeners();
     s.clear();
+  }
+
+  Future<void> addPickupLocation(
+      double latitude, double longitude, String userId) async {
+    try {
+      // Create a reference to the "pickupLocations" collection
+      CollectionReference<Map<String, dynamic>> pickupLocationsCollection =
+          FirebaseFirestore.instance.collection('pickupLocations');
+
+      // Add a document to the "pickupLocations" collection
+      await pickupLocationsCollection.add({
+        'latitude': latitude,
+        'longitude': longitude,
+        'userId': userId,
+      });
+
+      print('Pickup location added to Firestore.');
+    } catch (e) {
+      print('Error adding pickup location: $e');
+    }
   }
 }

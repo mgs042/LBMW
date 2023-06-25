@@ -6,6 +6,9 @@ class UserModel {
   String createdAt;
   String phoneNumber;
   String uid;
+  double? latitude; // Updated field for latitude
+  double? longitude; // Updated field for longitude
+
   UserModel({
     required this.name,
     required this.email,
@@ -14,8 +17,11 @@ class UserModel {
     required this.createdAt,
     required this.phoneNumber,
     required this.uid,
+    required this.latitude, // Updated constructor to include latitude
+    required this.longitude, // Updated constructor to include longitude
   });
-  //from map
+
+  // from map
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       name: map['name'] ?? '',
@@ -25,9 +31,12 @@ class UserModel {
       phoneNumber: map['phoneNumber'] ?? '',
       createdAt: map['createdAt'] ?? '',
       profilePic: map['profilePic'] ?? '',
+      latitude: map['latitude'],
+      longitude: map['longitude'],
     );
   }
-//to map
+
+  // to map
   Map<String, dynamic> toMap() {
     return {
       "name": name,
@@ -37,6 +46,8 @@ class UserModel {
       "phoneNumber": phoneNumber,
       "createdAt": createdAt,
       "profilePic": profilePic,
+      "latitude": latitude,
+      "longitude": longitude,
     };
   }
 }
