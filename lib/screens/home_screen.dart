@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trash_dash/provider/auth_provider.dart';
 import 'package:trash_dash/screens/welcome_screen.dart';
+import 'package:trash_dash/screens/user_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -55,6 +56,18 @@ class _HomeScreenState extends State<HomeScreen> {
             Text(ap.userModel.phoneNumber),
             Text(ap.userModel.email),
             Text(ap.userModel.address),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => UserScreen(),
+                  ),
+                );
+              },
+              child: Text('Go to User Screen'),
+            ),
           ],
         ),
       ),
