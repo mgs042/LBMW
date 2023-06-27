@@ -117,7 +117,7 @@ class AuthProvider extends ChangeNotifier {
         userModel.profilePic = value;
         userModel.createdAt = DateTime.now().microsecondsSinceEpoch.toString();
         userModel.phoneNumber = _firebaseAuth.currentUser!.phoneNumber!;
-        userModel.uid = _firebaseAuth.currentUser!.uid!;
+        userModel.uid = _firebaseAuth.currentUser!.uid;
       });
       _userModel = userModel;
       // uploading to database

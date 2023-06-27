@@ -106,3 +106,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: TitilliumWeb-SemiBold
+      fonts:
+        - asset: fonts/TitilliumWeb-SemiBold.ttf

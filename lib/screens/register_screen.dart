@@ -32,6 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       TextPosition(offset: phoneController.text.length),
     );
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -59,6 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white,
                   ),
                 ),
                 const SizedBox(
@@ -68,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   "Add your phone number. We'll send you a verification code",
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.black38,
+                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
@@ -88,16 +90,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     hintText: "Enter phone number",
                     hintStyle: TextStyle(
                       fontWeight: FontWeight.w500,
-                      fontSize: 15,
-                      color: Colors.grey.shade600,
+                      fontSize: 18,
+                      color: Colors.grey.shade700,
                     ),
+                    filled: true,
+                    fillColor:
+                        Colors.grey.shade300, // Set the text box color to grey
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.black12),
+                      borderSide: const BorderSide(color: Colors.grey),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.black12),
+                      borderSide: const BorderSide(color: Colors.white),
                     ),
                     prefixIcon: Container(
                       padding: const EdgeInsets.all(12.0),

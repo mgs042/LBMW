@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:trash_dash/screens/register_screen.dart';
+import 'package:trash_dash/screens/main_screen.dart';
 import 'package:trash_dash/widgets/custom_button.dart';
 import 'package:provider/provider.dart';
 import 'package:trash_dash/provider/auth_provider.dart';
-import 'package:trash_dash/screens/home_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
+      backgroundColor: Colors.black, // Set the background color to black
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -36,6 +37,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
+                    color: Colors.white, // Set the text color to white
                   ),
                 ),
                 const SizedBox(
@@ -45,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   '"The greatest threat to our planet is the belief that someone else will save it." - Robert Swan',
                   style: TextStyle(
                     fontSize: 15,
-                    color: Color.fromARGB(255, 32, 113, 37),
+                    color: Colors.lightGreen, // Set the quote text color
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -59,13 +61,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     padding: EdgeInsets.only(top: 16.0),
                     child: CustomButton(
                       onPressed: () async {
-                        //when true then fetch shared preference data
+                        // When true, fetch shared preference data
                         if (ap.isSignedIn == true) {
                           await ap.getDataFromSP().whenComplete(
                                 () => Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => const HomeScreen(),
+                                    builder: (context) => MainScreen(),
                                   ),
                                 ),
                               );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:trash_dash/model/user_model.dart';
-import 'package:trash_dash/screens/home_screen.dart';
+import 'package:trash_dash/screens/main_screen.dart';
 import 'package:trash_dash/screens/map_screen.dart';
 import 'package:trash_dash/provider/auth_provider.dart';
 import 'package:trash_dash/utils/utils.dart';
@@ -81,6 +81,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
     final isLoading =
         Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: isLoading == true
             ? const Center(
@@ -143,7 +144,10 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                               controller: addressController,
                               enabled: true, // Enable editing of address field
                               suffixIcon: IconButton(
-                                icon: Icon(Icons.map),
+                                icon: Icon(
+                                  Icons.place,
+                                  color: Colors.green,
+                                ),
                                 onPressed: openMapScreen,
                               ),
                             ),
@@ -186,9 +190,15 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
             keyboardType: inputType,
             maxLines: maxLines,
             enabled: enabled,
+            style: TextStyle(color: Colors.white), // Set the font color
             decoration: InputDecoration(
-              contentPadding: const EdgeInsets.fromLTRB(40, 10, 15, 10),
+              contentPadding: const EdgeInsets.fromLTRB(50, 20, 15, 10),
               hintText: hintText,
+              hintStyle: TextStyle(
+                color: Colors.grey,
+                fontSize: 18, // Set the hint text font size
+              ), // Set the hint text color
+
               alignLabelWithHint: true,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -203,6 +213,15 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                 ),
               ),
               suffixIcon: suffixIcon,
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide(
+                  color: Colors.white,
+                ),
+              ),
+              // Set the selection color
+              // Here, we're setting it to green
+              // You can change it to any color you want
             ),
           ),
           Positioned(
@@ -256,8 +275,7 @@ class _UserInformationScreenState extends State<UserInformationScreen> {
                 (value) => ap.setSignIn().then(
                       (value) => Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
+                        MaterialPageRoute(builder: (context) => MainScreen()),
                         (route) => false,
                       ),
                     ),

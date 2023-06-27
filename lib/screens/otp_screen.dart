@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
-import 'package:trash_dash/screens/home_screen.dart';
+import 'package:trash_dash/screens/main_screen.dart';
+import 'package:trash_dash/screens/user_screen.dart';
 import 'package:trash_dash/screens/user_information_screen.dart';
 import 'package:trash_dash/utils/utils.dart';
 import 'package:trash_dash/widgets/custom_button.dart';
@@ -21,6 +22,7 @@ class _OtpScreenState extends State<OtpScreen> {
     final isLoading =
         Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
+      backgroundColor: Colors.black, // Set the background color to black
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: isLoading == true
@@ -48,7 +50,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         padding: EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: Colors.green.shade50,
+                          color: Colors.grey.shade900,
                         ),
                         child: Padding(
                           padding: EdgeInsets.all(10),
@@ -63,6 +65,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                       const SizedBox(
@@ -72,8 +75,8 @@ class _OtpScreenState extends State<OtpScreen> {
                         "Enter the OTP sent to your phone number",
                         style: TextStyle(
                           fontSize: 16,
-                          color: Colors.black38,
                           fontWeight: FontWeight.bold,
+                          color: Colors.grey,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -167,7 +170,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.black38,
+                          color: Colors.grey,
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -176,7 +179,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.green,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -206,8 +209,7 @@ class _OtpScreenState extends State<OtpScreen> {
                                 (value) => Navigator.pushAndRemoveUntil(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) =>
-                                            const HomeScreen()),
+                                        builder: (context) => MainScreen()),
                                     (route) => false),
                               ),
                         ),
