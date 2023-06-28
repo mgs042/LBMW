@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:trash_dash/screens/main_screen.dart';
 import 'package:trash_dash/screens/user_screen.dart';
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:trash_dash/widgets/custom_button.dart';
+import 'package:provider/provider.dart';
+import 'package:trash_dash/provider/auth_provider.dart';
 
 class RequestScreen extends StatefulWidget {
   @override
@@ -12,6 +15,7 @@ class RequestScreen extends StatefulWidget {
 class _RequestScreenState extends State<RequestScreen> {
   @override
   Widget build(BuildContext context) {
+    final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
       backgroundColor: Color(0xFF0F0F0F),
       appBar: PreferredSize(
@@ -158,6 +162,16 @@ class _RequestScreenState extends State<RequestScreen> {
               color: Colors.grey.shade900,
               borderRadius: BorderRadius.circular(10),
             ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 10, top: 10),
+              child: Text(
+                ap.userModel.address,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15),
+              ),
+            ),
           ),
           SizedBox(height: 40),
           SizedBox(
@@ -192,9 +206,15 @@ class _RequestScreenState extends State<RequestScreen> {
                 icon: FontAwesomeIcons.clockRotateLeft,
                 text: 'History',
               ),
-              IconText(
-                icon: FontAwesomeIcons.house,
-                text: 'Home',
+              InkWell(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MainScreen()));
+                },
+                child: IconText(
+                  icon: FontAwesomeIcons.house,
+                  text: 'Home',
+                ),
               ),
               IconText(
                 icon: FontAwesomeIcons.gift,
