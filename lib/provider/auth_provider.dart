@@ -188,17 +188,25 @@ class AuthProvider extends ChangeNotifier {
   }
 
   Future<void> addPickupLocation(
-      double latitude, double longitude, String userId) async {
+    double latitude,
+    double longitude,
+    String uid,
+    String address,
+    DateTime selectedDate,
+    String selectedWasteType,
+  ) async {
     try {
       // Create a reference to the "pickupLocations" collection
       CollectionReference<Map<String, dynamic>> pickupLocationsCollection =
-          FirebaseFirestore.instance.collection('pickupLocations');
+          _firebaseFirestore.collection('pickupLocations');
 
-      // Add a document to the "pickupLocations" collection
-      await pickupLocationsCollection.add({
+      // Set the document in the "pickupLocations" collection with the UID as the document ID
+      await pickupLocationsCollection.doc(uid).set({
         'latitude': latitude,
         'longitude': longitude,
-        'userId': userId,
+        'address': address,
+        'selectedDate': selectedDate.toIso8601String(),
+        'selectedWasteType': selectedWasteType,
       });
 
       print('Pickup location added to Firestore.');
