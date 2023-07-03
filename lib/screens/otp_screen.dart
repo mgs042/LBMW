@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import 'package:trash_dash/screens/main_screen.dart';
-import 'package:trash_dash/screens/user_screen.dart';
 import 'package:trash_dash/screens/user_information_screen.dart';
 import 'package:trash_dash/utils/utils.dart';
 import 'package:trash_dash/widgets/custom_button.dart';

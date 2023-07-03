@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:trash_dash/provider/auth_provider.dart';
+import 'package:trash_dash/screens/history_screen.dart';
 import 'package:trash_dash/screens/main_screen.dart';
 import 'package:trash_dash/screens/welcome_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -173,19 +174,37 @@ class _UserScreenState extends State<UserScreen> {
                 child: IconText(
                   icon: FontAwesomeIcons.solidCircleUser,
                   text: 'Account',
+                  onPressed: () {},
                 ),
               ),
               IconText(
                 icon: FontAwesomeIcons.clockRotateLeft,
                 text: 'History',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => HistoryScreen(),
+                    ),
+                  );
+                },
               ),
               IconText(
                 icon: FontAwesomeIcons.house,
                 text: 'Home',
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainScreen(),
+                    ),
+                  );
+                },
               ),
               IconText(
                 icon: FontAwesomeIcons.gift,
                 text: 'Rewards',
+                onPressed: () {},
               ),
             ],
           ),
@@ -198,32 +217,37 @@ class _UserScreenState extends State<UserScreen> {
 class IconText extends StatelessWidget {
   final IconData icon;
   final String text;
+  final VoidCallback onPressed;
 
   const IconText({
     Key? key,
     required this.icon,
     required this.text,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Icon(
-          icon,
-          color: Colors.greenAccent,
-          size: 20,
-        ),
-        SizedBox(height: 4),
-        Text(
-          text,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
+    return GestureDetector(
+      onTap: onPressed,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(
+            icon,
+            color: Colors.greenAccent,
+            size: 20,
           ),
-        ),
-      ],
+          SizedBox(height: 4),
+          Text(
+            text,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

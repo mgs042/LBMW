@@ -4,7 +4,7 @@ import 'package:trash_dash/screens/request_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trash_dash/screens/user_screen.dart';
 import 'package:trash_dash/screens/welcome_screen.dart';
-
+import 'package:trash_dash/screens/history_screen.dart';
 import '../provider/auth_provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -206,7 +206,13 @@ class MainScreen extends StatelessWidget {
                     IconText(
                       icon: FontAwesomeIcons.clockRotateLeft,
                       text: 'History',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => HistoryScreen()),
+                        );
+                      },
                     ),
                     IconText(
                       icon: FontAwesomeIcons.house,
