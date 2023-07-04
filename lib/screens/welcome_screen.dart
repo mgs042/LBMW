@@ -17,7 +17,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
-      backgroundColor: Colors.black, // Set the background color to black
+      backgroundColor: Color(0xffe4fbed),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -37,7 +37,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white, // Set the text color to white
+                    color: Color(0xff010402), // Set the text color to white
                   ),
                 ),
                 const SizedBox(
@@ -47,7 +47,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   '"The greatest threat to our planet is the belief that someone else will save it." - Robert Swan',
                   style: TextStyle(
                     fontSize: 15,
-                    color: Colors.lightGreen, // Set the quote text color
+                    color: Color(0xff010402), // Set the quote text color
                     fontWeight: FontWeight.bold,
                   ),
                 ),

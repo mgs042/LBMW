@@ -18,7 +18,7 @@ class _UserScreenState extends State<UserScreen> {
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
-      backgroundColor: Color(0xFF0F0F0F),
+      backgroundColor: Color(0xffe4fbed),
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
@@ -27,6 +27,8 @@ class _UserScreenState extends State<UserScreen> {
           centerTitle: true,
           title: const Text(
             "Trash Dash",
+            style: TextStyle(
+                fontWeight: FontWeight.bold, color: Color(0xff010402)),
           ),
           actions: [
             IconButton(
@@ -40,7 +42,7 @@ class _UserScreenState extends State<UserScreen> {
                       ),
                     );
               },
-              icon: const Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app, color: Color(0xff010402)),
             ),
           ],
         ),
@@ -73,7 +75,7 @@ class _UserScreenState extends State<UserScreen> {
             Text(
               ap.userModel.name,
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xff010402),
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
               ),
@@ -82,7 +84,7 @@ class _UserScreenState extends State<UserScreen> {
             Text(
               ap.userModel.address,
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xff010402),
                 fontSize: 16,
               ),
             ),
@@ -103,15 +105,16 @@ class _UserScreenState extends State<UserScreen> {
                   children: [
                     Icon(
                       FontAwesomeIcons.fileAlt,
-                      color: Colors.white,
+                      color: Color(0xff8CEEB3),
                       size: 24,
                     ),
                     SizedBox(height: 8),
                     Text(
                       'Orders',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xff010402),
                         fontSize: 12,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -120,15 +123,16 @@ class _UserScreenState extends State<UserScreen> {
                   children: [
                     Icon(
                       FontAwesomeIcons.map,
-                      color: Colors.white,
+                      color: Color(0xff8CEEB3),
                       size: 24,
                     ),
                     SizedBox(height: 8),
                     Text(
                       'Map',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xff010402),
                         fontSize: 12,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -137,15 +141,16 @@ class _UserScreenState extends State<UserScreen> {
                   children: [
                     Icon(
                       FontAwesomeIcons.edit,
-                      color: Colors.white,
+                      color: Color(0xff8CEEB3),
                       size: 24,
                     ),
                     SizedBox(height: 8),
                     Text(
                       'Profile Edit',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xff010402),
                         fontSize: 12,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -162,7 +167,7 @@ class _UserScreenState extends State<UserScreen> {
           height: 68,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.shade900,
+            color: Color(0xffF2FDF6),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -235,14 +240,14 @@ class IconText extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: Colors.greenAccent,
+            color: Color(0xff8CEEB3),
             size: 20,
           ),
           SizedBox(height: 4),
           Text(
             text,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xff010402),
               fontWeight: FontWeight.bold,
             ),
           ),

@@ -24,45 +24,30 @@ class _HistoryScreenState extends State<HistoryScreen> {
         FirebaseFirestore.instance.collection('pickupLocations');
 
     return Scaffold(
-      backgroundColor: Color(0xFF0F0F0F),
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(120),
-        child: AppBar(
-          backgroundColor: Colors.greenAccent,
-          elevation: 0,
-          leading: IconButton(
-            icon: Icon(Icons.notifications, color: Colors.black),
+      backgroundColor: Color(0xffe4fbed),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        title: const Text(
+          "Trash Dash",
+          style:
+              TextStyle(fontWeight: FontWeight.bold, color: Color(0xff010402)),
+        ),
+        leading: IconButton(
+          icon: Icon(FontAwesomeIcons.bell, color: Color(0xff010402)),
+          onPressed: () {
+            // Handle notification icon tap
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.menu, color: Color(0xff010402)),
             onPressed: () {
-              // Handle notification icon tap
+              // Handle hamburger menu tap
             },
           ),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
-              onPressed: () {
-                // Handle hamburger menu tap
-              },
-            ),
-          ],
-          flexibleSpace: Padding(
-            padding: const EdgeInsets.only(left: 26, bottom: 11),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Booking History',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                SizedBox(height: 8),
-              ],
-            ),
-          ),
-        ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -108,7 +93,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           Container(
                             width: 300,
                             decoration: BoxDecoration(
-                              color: Colors.grey.shade900,
+                              color: Color(0xff8CEEB3),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             padding: EdgeInsets.all(16),
@@ -119,7 +104,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 Text(
                                   'Date',
                                   style: TextStyle(
-                                    color: Colors.greenAccent,
+                                    color: Color(0xff010402),
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -129,7 +114,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 Text(
                                   formattedDate,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color(0xff010402),
                                     fontSize: 20,
                                   ),
                                   textAlign: TextAlign.center,
@@ -140,7 +125,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           Container(
                             width: 300,
                             decoration: BoxDecoration(
-                              color: Colors.grey.shade900,
+                              color: Color(0xff8CEEB3),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             padding: EdgeInsets.all(16),
@@ -151,7 +136,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 Text(
                                   'Waste Type',
                                   style: TextStyle(
-                                    color: Colors.greenAccent,
+                                    color: Color(0xff010402),
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -161,7 +146,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 Text(
                                   selectedWasteType,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color(0xff010402),
                                     fontSize: 20,
                                   ),
                                   textAlign: TextAlign.center,
@@ -172,7 +157,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                           Container(
                             width: 300,
                             decoration: BoxDecoration(
-                              color: Colors.grey.shade900,
+                              color: Color(0xff8CEEB3),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             padding: EdgeInsets.all(16),
@@ -182,7 +167,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 Text(
                                   'Address',
                                   style: TextStyle(
-                                    color: Colors.greenAccent,
+                                    color: Color(0xff010402),
                                     fontSize: 25,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -192,7 +177,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                                 Text(
                                   address,
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Color(0xff010402),
                                     fontSize: 20,
                                   ),
                                   textAlign: TextAlign.center,
@@ -219,7 +204,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               height: 68,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.grey.shade900,
+                color: const Color(0xffF2FDF6),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -291,14 +276,14 @@ class IconText extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: Colors.greenAccent,
+            color: Color(0xff8CEEB3),
             size: 20,
           ),
           SizedBox(height: 4),
           Text(
             text,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xff010402),
               fontWeight: FontWeight.bold,
             ),
           ),

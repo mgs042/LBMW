@@ -34,21 +34,21 @@ class _RequestScreenState extends State<RequestScreen> {
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
-      backgroundColor: Color(0xFF0F0F0F),
+      backgroundColor: Color(0xffe4fbed),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(120),
         child: AppBar(
-          backgroundColor: Colors.greenAccent,
+          backgroundColor: Color(0xff8CEEB3),
           elevation: 0,
           leading: IconButton(
-            icon: Icon(Icons.notifications, color: Colors.black),
+            icon: Icon(FontAwesomeIcons.bell, color: Color(0xff010402)),
             onPressed: () {
               // Handle notification icon tap
             },
           ),
           actions: [
             IconButton(
-              icon: Icon(Icons.menu, color: Colors.black),
+              icon: Icon(Icons.menu, color: Color(0xff010402)),
               onPressed: () {
                 // Handle hamburger menu tap
               },
@@ -63,7 +63,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 Text(
                   'Schedule a Pick Up',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xff010402),
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -72,7 +72,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 Text(
                   'Schedule a pick up at your time!',
                   style: TextStyle(
-                    color: Colors.black,
+                    color: Color(0xff010402),
                     fontSize: 14,
                     fontWeight: FontWeight.bold,
                   ),
@@ -91,16 +91,16 @@ class _RequestScreenState extends State<RequestScreen> {
                 DateTime.now(),
                 height: 100,
                 width: 60,
-                initialSelectedDate: DateTime.now(),
-                selectedTextColor: Colors.greenAccent,
+                selectionColor: Color(0xffF2FDF6),
+                selectedTextColor: Color(0xff8CEEB3),
                 dateTextStyle: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w500,
-                    color: Colors.white),
-                dayTextStyle:
-                    TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
-                monthTextStyle:
-                    TextStyle(fontWeight: FontWeight.w500, color: Colors.white),
+                    color: Color(0xff010402)),
+                dayTextStyle: TextStyle(
+                    fontWeight: FontWeight.w500, color: Color(0xff010402)),
+                monthTextStyle: TextStyle(
+                    fontWeight: FontWeight.w500, color: Color(0xff010402)),
                 onDateChange: (date) {
                   setState(() {
                     selectedDate =
@@ -114,7 +114,7 @@ class _RequestScreenState extends State<RequestScreen> {
               height: 4,
               width: 50,
               decoration: BoxDecoration(
-                color: Colors.greenAccent,
+                color: Color(0xff8CEEB3),
                 borderRadius: BorderRadius.circular(10),
               ),
             ),
@@ -125,7 +125,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 child: Text(
                   'Garbage category',
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Color(0xff010402),
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
@@ -152,7 +152,7 @@ class _RequestScreenState extends State<RequestScreen> {
                       child: Text(
                         'Pick Up Address',
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Color(0xff010402),
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -168,14 +168,14 @@ class _RequestScreenState extends State<RequestScreen> {
                           Text(
                             'Edit Address',
                             style: TextStyle(
-                              color: Colors.white,
+                              color: Color(0xff010402),
                               fontWeight: FontWeight.bold,
                               fontSize: 14,
                             ),
                           ),
                           Icon(
                             Icons.edit,
-                            color: Colors.white,
+                            color: Color(0xff010402),
                           ),
                         ],
                       ),
@@ -189,7 +189,7 @@ class _RequestScreenState extends State<RequestScreen> {
               height: 130,
               width: 350,
               decoration: BoxDecoration(
-                color: Colors.grey.shade900,
+                color: Color(0xffF2FDF6),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
@@ -197,7 +197,7 @@ class _RequestScreenState extends State<RequestScreen> {
                 child: Text(
                   ap.userModel.address,
                   style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xff010402),
                       fontWeight: FontWeight.bold,
                       fontSize: 15),
                 ),
@@ -240,7 +240,7 @@ class _RequestScreenState extends State<RequestScreen> {
           height: 68,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Colors.grey.shade900,
+            color: Color(0xffF2FDF6),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -285,7 +285,7 @@ TextStyle get subHeadingStyle {
   return TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.bold,
-    color: Colors.white,
+    color: Color(0xff010402),
   );
 }
 
@@ -306,14 +306,14 @@ class IconText extends StatelessWidget {
       children: [
         FaIcon(
           icon,
-          color: Colors.greenAccent,
+          color: Color(0xff8CEEB3),
           size: 20,
         ),
         SizedBox(height: 4),
         Text(
           text,
           style: TextStyle(
-            color: Colors.white,
+            color: Color(0xff010402),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -343,7 +343,7 @@ class _WasteContainerState extends State<WasteContainer> {
       height: 100,
       width: 350,
       decoration: BoxDecoration(
-        color: Colors.grey.shade900,
+        color: Color(0xffF2FDF6),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
@@ -365,7 +365,7 @@ class _WasteContainerState extends State<WasteContainer> {
                       width: 12,
                       decoration: BoxDecoration(
                         color: widget.selectedWasteType == 'Organic Waste'
-                            ? Colors.greenAccent
+                            ? Color(0xff8CEEB3)
                             : Colors.white,
                         shape: BoxShape.circle,
                       ),
@@ -374,7 +374,7 @@ class _WasteContainerState extends State<WasteContainer> {
                     Text(
                       'Organic Waste',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xff010402),
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -397,7 +397,7 @@ class _WasteContainerState extends State<WasteContainer> {
                       width: 12,
                       decoration: BoxDecoration(
                         color: widget.selectedWasteType == 'Inorganic Waste'
-                            ? Colors.greenAccent
+                            ? Color(0xff8CEEB3)
                             : Colors.white,
                         shape: BoxShape.circle,
                       ),
@@ -406,7 +406,7 @@ class _WasteContainerState extends State<WasteContainer> {
                     Text(
                       'Inorganic Waste',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Color(0xff010402),
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
@@ -453,7 +453,7 @@ class ScheduleButton extends StatelessWidget {
         );
       },
       style: ElevatedButton.styleFrom(
-        primary: Colors.greenAccent,
+        primary: Color(0xff8CEEB3),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -463,6 +463,7 @@ class ScheduleButton extends StatelessWidget {
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.bold,
+          color: Color(0xff010402),
         ),
       ),
     );

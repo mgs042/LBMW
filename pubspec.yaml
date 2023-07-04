@@ -113,3 +113,6 @@ flutter:
     - family: TitilliumWeb-SemiBold
       fonts:
         - asset: fonts/TitilliumWeb-SemiBold.ttf
+    - family: Baloo2-Bold
+      fonts:
+        - asset: fonts/Baloo2-Bold.ttf

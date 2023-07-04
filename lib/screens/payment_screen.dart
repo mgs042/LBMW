@@ -7,6 +7,7 @@ import '../provider/auth_provider.dart';
 import '../widgets/custom_button.dart';
 import 'main_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PaymentScreen extends StatefulWidget {
   final DateTime selectedDate;
@@ -141,14 +142,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
     double containerWidth = MediaQuery.of(context).size.width * 0.8;
 
     return Scaffold(
-      backgroundColor: Color(0xFF0F0F0F),
+      backgroundColor: Color(0xffe4fbed),
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(120),
         child: AppBar(
-          backgroundColor: Colors.greenAccent,
+          backgroundColor: Color(0xff8CEEB3),
           elevation: 0,
           leading: IconButton(
-            icon: Icon(Icons.notifications, color: Colors.black),
+            icon: Icon(FontAwesomeIcons.bell, color: Colors.black),
             onPressed: () {
               // Handle notification icon tap
             },
@@ -200,7 +201,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 margin: EdgeInsets.only(top: screenHeight * 0.001),
                 padding: EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.grey.shade900,
+                  color: Color(0xffF2FDF6),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Column(
@@ -210,8 +211,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       'Confirm',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 50,
-                        color: Colors.greenAccent,
+                        fontSize: 40,
+                        color: Color(0xff010402),
                       ),
                     ),
                     SizedBox(height: 50),
@@ -219,16 +220,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       'Address:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 26,
-                        color: Colors.white,
+                        fontSize: 20,
+                        color: Color(0xff010402),
                       ),
                     ),
                     SizedBox(height: 5),
                     Text(
                       widget.address,
                       style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
+                        fontSize: 14,
+                        color: Color(0xff010402),
                       ),
                     ),
                     SizedBox(height: 50),
@@ -236,16 +237,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       'Selected Date:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 26,
-                        color: Colors.white,
+                        fontSize: 20,
+                        color: Color(0xff010402),
                       ),
                     ),
                     SizedBox(height: 5),
                     Text(
                       DateFormat('yyyy-MM-dd').format(widget.selectedDate),
                       style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
+                        fontSize: 14,
+                        color: Color(0xff010402),
                       ),
                     ),
                     SizedBox(height: 50),
@@ -253,26 +254,26 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       'Selected Waste Type:',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 26,
-                        color: Colors.white,
+                        fontSize: 20,
+                        color: Color(0xff010402),
                       ),
                     ),
                     SizedBox(height: 5),
                     Text(
                       widget.selectedWasteType,
                       style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
+                        fontSize: 14,
+                        color: Color(0xff010402),
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 50),
             Container(
-              width: 200,
-              height: 60,
+              width: 150,
+              height: 37,
               child: CustomButton(
                 text: "Pay Now",
                 onPressed: _openRazorpayPayment,

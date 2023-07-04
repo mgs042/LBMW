@@ -32,7 +32,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       TextPosition(offset: phoneController.text.length),
     );
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xffe4fbed),
       body: SafeArea(
         child: Center(
           child: Padding(
@@ -60,7 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: Color(0xff010402),
                   ),
                 ),
                 const SizedBox(
@@ -70,7 +70,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   "Add your phone number. We'll send you a verification code",
                   style: TextStyle(
                     fontSize: 13,
-                    color: Colors.white,
+                    color: Color(0xff010402),
                     fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.center,
@@ -94,15 +94,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       color: Colors.grey.shade700,
                     ),
                     filled: true,
-                    fillColor:
-                        Colors.grey.shade300, // Set the text box color to grey
+                    fillColor: Color(0xffF2FDF6),
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.grey),
+                      borderSide: const BorderSide(color: Color(0xffF2FDF6)),
                     ),
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.white),
+                      borderSide: const BorderSide(color: Color(0xff8CEEB3)),
                     ),
                     prefixIcon: Container(
                       padding: const EdgeInsets.all(12.0),
@@ -123,7 +122,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           "${selectedCountry.flagEmoji}  +${selectedCountry.phoneCode}",
                           style: const TextStyle(
                             fontSize: 18,
-                            color: Colors.black,
+                            color: Color(0xff010402),
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -135,7 +134,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             width: 30,
                             margin: const EdgeInsets.all(10.0),
                             decoration: const BoxDecoration(
-                                shape: BoxShape.circle, color: Colors.green),
+                                shape: BoxShape.circle,
+                                color: Color(0xff8CEEB3)),
                             child: const Icon(
                               Icons.done,
                               color: Colors.white,

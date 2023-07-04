@@ -12,19 +12,19 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
-      backgroundColor: Color(0xFF0F0F0F),
+      backgroundColor: Color(0xffe4fbed),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.notifications),
+          icon: Icon(FontAwesomeIcons.bell, color: Color(0xff010402)),
           onPressed: () {
             // Handle notification icon tap
           },
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.menu, color: Color(0xff010402)),
             onPressed: () {
               // Handle hamburger menu tap
             },
@@ -40,7 +40,7 @@ class MainScreen extends StatelessWidget {
                     ),
                   );
             },
-            icon: const Icon(Icons.exit_to_app),
+            icon: const Icon(Icons.exit_to_app, color: Color(0xff010402)),
           ),
         ],
       ),
@@ -55,7 +55,7 @@ class MainScreen extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                 color: Colors.transparent,
-                border: Border.all(color: Colors.grey),
+                border: Border.all(color: Color(0xff8CEEB3)),
               ),
               child: Column(
                 children: [
@@ -73,7 +73,7 @@ class MainScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 20,
-                                color: Colors.white,
+                                color: Color(0xff010402),
                               ),
                             ),
                           ),
@@ -85,7 +85,7 @@ class MainScreen extends StatelessWidget {
                             child: FaIcon(
                               FontAwesomeIcons.solidTrashCan,
                               size: 50,
-                              color: Colors.greenAccent,
+                              color: Color(0xff8CEEB3),
                             ),
                           ),
                         ),
@@ -105,7 +105,7 @@ class MainScreen extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(30),
-                          color: Colors.greenAccent,
+                          color: Color(0xff8CEEB3),
                         ),
                         child: Row(
                           children: [
@@ -151,7 +151,7 @@ class MainScreen extends StatelessWidget {
             child: Text(
               'More Services',
               style: TextStyle(
-                color: Colors.white,
+                color: Color(0xff010402),
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
@@ -193,7 +193,7 @@ class MainScreen extends StatelessWidget {
                 height: 68,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.grey.shade900,
+                  color: const Color(0xffF2FDF6),
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -259,7 +259,7 @@ class RoundedBox extends StatelessWidget {
       height: 101,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.grey.shade900,
+        color: Color(0xffF2FDF6),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -267,7 +267,7 @@ class RoundedBox extends StatelessWidget {
           Icon(
             icon,
             size: 25,
-            color: Colors.greenAccent,
+            color: Color(0xff8CEEB3),
           ),
           SizedBox(height: 8),
           Text(
@@ -275,7 +275,7 @@ class RoundedBox extends StatelessWidget {
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Color(0xff010402),
             ),
           ),
         ],
@@ -305,14 +305,14 @@ class IconText extends StatelessWidget {
         children: [
           Icon(
             icon,
-            color: Colors.greenAccent,
+            color: Color(0xff8CEEB3),
             size: 20,
           ),
           SizedBox(height: 4),
           Text(
             text,
             style: TextStyle(
-              color: Colors.white,
+              color: Color(0xff010402),
               fontWeight: FontWeight.bold,
             ),
           ),

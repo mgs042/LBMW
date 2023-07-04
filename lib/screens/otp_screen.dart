@@ -21,7 +21,7 @@ class _OtpScreenState extends State<OtpScreen> {
     final isLoading =
         Provider.of<AuthProvider>(context, listen: true).isLoading;
     return Scaffold(
-      backgroundColor: Colors.black, // Set the background color to black
+      backgroundColor: Color(0xffe4fbed), // Set the background color to black
       resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: isLoading == true
@@ -64,7 +64,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         style: TextStyle(
                           fontSize: 24,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Color(0xff010402),
                         ),
                       ),
                       const SizedBox(
@@ -75,7 +75,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                          color: Color(0xff010402),
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -90,16 +90,16 @@ class _OtpScreenState extends State<OtpScreen> {
                           height: 50,
                           textStyle: const TextStyle(
                             fontSize: 22,
-                            color: Color.fromRGBO(0, 133, 7, 1),
+                            color: Color(0xffF2FDF6),
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
                             border: Border.all(
-                              color: Color.fromARGB(255, 0, 137, 5),
+                              color: Color(0xff8CEEB3),
                             ),
                             boxShadow: const [
                               BoxShadow(
-                                color: Color.fromRGBO(196, 248, 193, 0.212),
+                                color: Color.fromRGBO(235, 255, 234, 1),
                                 offset: Offset(0, 3),
                                 blurRadius: 1,
                               )
@@ -111,11 +111,11 @@ class _OtpScreenState extends State<OtpScreen> {
                           height: 50,
                           textStyle: const TextStyle(
                             fontSize: 22,
-                            color: Colors.white,
+                            color: Color(0xff010402),
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Color.fromARGB(255, 83, 181, 86),
+                            color: Color(0xffF2FDF6),
                           ),
                         ),
                         focusedPinTheme: PinTheme(
@@ -123,11 +123,11 @@ class _OtpScreenState extends State<OtpScreen> {
                           height: 50,
                           textStyle: const TextStyle(
                             fontSize: 22,
-                            color: Colors.white,
+                            color: Color(0xff010402),
                           ),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(10),
-                            color: Color.fromARGB(255, 6, 156, 34),
+                            color: Color(0xff8CEEB3),
                           ),
                         ),
                         errorPinTheme: PinTheme(
@@ -178,7 +178,7 @@ class _OtpScreenState extends State<OtpScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
+                          color: Color(0xff010402),
                         ),
                       ),
                     ],
