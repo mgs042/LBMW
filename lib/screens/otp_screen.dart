@@ -46,14 +46,9 @@ class _OtpScreenState extends State<OtpScreen> {
                       Container(
                         width: 200,
                         height: 200,
-                        padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.grey.shade900,
-                        ),
                         child: Padding(
                           padding: EdgeInsets.all(10),
-                          child: Image.asset('assets/image2.png'),
+                          child: Image.asset('assets/EnterOTP.png'),
                         ),
                       ),
                       const SizedBox(

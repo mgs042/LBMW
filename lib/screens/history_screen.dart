@@ -204,6 +204,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
               height: 68,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: Color(0xff8CEEB3),
+                  width: 0.5,
+                ),
                 color: const Color(0xffF2FDF6),
               ),
               child: Row(

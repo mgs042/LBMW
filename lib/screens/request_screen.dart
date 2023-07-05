@@ -190,6 +190,11 @@ class _RequestScreenState extends State<RequestScreen> {
               width: 350,
               decoration: BoxDecoration(
                 color: Color(0xffF2FDF6),
+                border: Border.all(
+                  color: Color(
+                      0xff8CEEB3), // Replace with your desired border color
+                  width: 0.5, // Replace with your desired border width
+                ),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Padding(
@@ -240,6 +245,11 @@ class _RequestScreenState extends State<RequestScreen> {
           height: 68,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color:
+                  Color(0xff8CEEB3), // Replace with your desired border color
+              width: 0.5, // Replace with your desired border width
+            ),
             color: Color(0xffF2FDF6),
           ),
           child: Row(
@@ -345,6 +355,10 @@ class _WasteContainerState extends State<WasteContainer> {
       decoration: BoxDecoration(
         color: Color(0xffF2FDF6),
         borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: Color(0xff8CEEB3), // Replace with your desired border color
+          width: 0.5, // Replace with your desired border width
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.only(top: 15),

@@ -54,7 +54,7 @@ class MainScreen extends StatelessWidget {
               height: 320,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-                color: Colors.transparent,
+                color: Color(0xffF2FDF6),
                 border: Border.all(color: Color(0xff8CEEB3)),
               ),
               child: Column(
@@ -81,12 +81,8 @@ class MainScreen extends StatelessWidget {
                         Expanded(
                           flex: 3,
                           child: Padding(
-                            padding: const EdgeInsets.only(left: 80),
-                            child: FaIcon(
-                              FontAwesomeIcons.solidTrashCan,
-                              size: 50,
-                              color: Color(0xff8CEEB3),
-                            ),
+                            padding: const EdgeInsets.only(left: 10),
+                            child: Image.asset('assets/SavetheEarth-bro.png'),
                           ),
                         ),
                       ],
@@ -193,6 +189,11 @@ class MainScreen extends StatelessWidget {
                 height: 68,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
+                  border: Border.all(
+                    color: Color(
+                        0xff8CEEB3), // Replace with your desired border color
+                    width: 0.5, // Replace with your desired border width
+                  ),
                   color: const Color(0xffF2FDF6),
                 ),
                 child: Row(
@@ -259,6 +260,10 @@ class RoundedBox extends StatelessWidget {
       height: 101,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: Color(0xff8CEEB3),
+          width: 0.5,
+        ),
         color: Color(0xffF2FDF6),
       ),
       child: Column(

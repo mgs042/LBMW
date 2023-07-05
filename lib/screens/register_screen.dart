@@ -40,20 +40,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               children: [
                 Container(
-                  width: 200,
-                  height: 200,
-                  padding: EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green.shade50,
-                  ),
                   child: Padding(
                     padding: EdgeInsets.all(10),
-                    child: Image.asset('assets/image2.png'),
+                    child: SizedBox(
+                      width: 220,
+                      height: 220,
+                      child: Image.asset('assets/Signup.png'),
+                    ),
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 const Text(
                   "Register",
