@@ -56,6 +56,15 @@ class MainScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(30),
                 color: Color(0xffF2FDF6),
                 border: Border.all(color: Color(0xff8CEEB3)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 101, 129, 113)
+                        .withOpacity(1), // Shadow color
+                    offset: Offset(5, 5), // Shadow position
+                    blurRadius: 4, // Shadow blur radius
+                    // Shadow spread radius
+                  ),
+                ],
               ),
               child: Column(
                 children: [
@@ -171,7 +180,7 @@ class MainScreen extends StatelessWidget {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Padding(
-              padding: EdgeInsets.fromLTRB(25, 16, 25, 0),
+              padding: EdgeInsets.fromLTRB(25, 16, 25, 10),
               child: Row(
                 children: [
                   RoundedBox(
@@ -277,9 +286,17 @@ class RoundedBox extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(
           color: Color(0xff8CEEB3),
-          width: 0.5,
         ),
         color: Color(0xffF2FDF6),
+        boxShadow: [
+          BoxShadow(
+            color: Color.fromARGB(255, 101, 129, 113)
+                .withOpacity(1), // Shadow color
+            offset: Offset(5, 5), // Shadow position
+            blurRadius: 4, // Shadow blur radius
+            // Shadow spread radius
+          ),
+        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
