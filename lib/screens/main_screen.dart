@@ -90,51 +90,66 @@ class MainScreen extends StatelessWidget {
                   ),
                   Expanded(
                     flex: 1,
-                    child: GestureDetector(
-                      onTap: () {
+                    child: ElevatedButton(
+                      onPressed: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => RequestScreen()),
                         );
                       },
-                      child: Container(
-                        decoration: BoxDecoration(
+                      style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(30),
-                          color: Color(0xff8CEEB3),
                         ),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 2,
-                              child: Container(
-                                alignment: Alignment.centerLeft,
-                                padding: EdgeInsets.only(left: 16),
-                                child: Text(
-                                  'Waste Delivery Request for delivery',
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16,
+                        backgroundColor: Color(0xff8CEEB3),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 4,
+                            child: Container(
+                              alignment: Alignment.centerLeft,
+                              padding: EdgeInsets.only(left: 16, top: 26),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Waste Delivery',
+                                    style: TextStyle(
+                                      color: Color(0xff010402),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 19,
+                                    ),
                                   ),
+                                  SizedBox(
+                                      height:
+                                          8), // Add spacing between the texts
+                                  Text(
+                                    'Request for Delivery',
+                                    style: TextStyle(
+                                      color: Color.fromARGB(255, 65, 62, 62),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 3,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Padding(
+                                padding: const EdgeInsets.only(left: 50),
+                                child: Image.asset(
+                                  'assets/Schedule.png',
                                 ),
                               ),
                             ),
-                            Expanded(
-                              flex: 3,
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(20),
-                                child: Padding(
-                                  padding: const EdgeInsets.only(left: 80),
-                                  child: FaIcon(
-                                    FontAwesomeIcons.truckMoving,
-                                    size: 50,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
