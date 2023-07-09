@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:trash_dash/screens/user_screen.dart';
 import 'package:trash_dash/screens/welcome_screen.dart';
 import 'package:trash_dash/screens/history_screen.dart';
+import 'package:trash_dash/widgets/side_menu.dart';
 import '../provider/auth_provider.dart';
 
 class MainScreen extends StatelessWidget {

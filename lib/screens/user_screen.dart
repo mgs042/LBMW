@@ -5,6 +5,7 @@ import 'package:trash_dash/screens/history_screen.dart';
 import 'package:trash_dash/screens/main_screen.dart';
 import 'package:trash_dash/screens/welcome_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:trash_dash/widgets/profile_image.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({Key? key}) : super(key: key);
@@ -51,26 +52,7 @@ class _UserScreenState extends State<UserScreen> {
         padding: EdgeInsets.only(top: 85),
         child: Column(
           children: [
-            GestureDetector(
-              onTap: () {
-                showDialog(
-                  context: context,
-                  builder: (_) => EnlargedImageDialog(
-                    image: NetworkImage(ap.userModel.profilePic),
-                  ),
-                );
-              },
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 150),
-                child: Container(
-                  padding: EdgeInsets.all(4),
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundImage: NetworkImage(ap.userModel.profilePic),
-                  ),
-                ),
-              ),
-            ),
+            ProfileImage(imageUrl: ap.userModel.profilePic),
             SizedBox(height: 16),
             Text(
               ap.userModel.name,
@@ -256,25 +238,6 @@ class IconText extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class EnlargedImageDialog extends StatelessWidget {
-  final ImageProvider image;
-
-  const EnlargedImageDialog({
-    Key? key,
-    required this.image,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Dialog(
-      child: Container(
-        constraints: BoxConstraints(maxWidth: 400),
-        child: Image(image: image),
       ),
     );
   }
