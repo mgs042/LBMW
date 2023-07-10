@@ -21,7 +21,7 @@ class ProfileImage extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(4),
           child: CircleAvatar(
-            radius: 40,
+            radius: 4,
             backgroundImage: NetworkImage(imageUrl),
           ),
         ),

@@ -13,19 +13,14 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
     return Scaffold(
+      drawer: SideMenu(),
       backgroundColor: Color(0xffe4fbed),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(FontAwesomeIcons.bell, color: Color(0xff010402)),
-          onPressed: () {
-            // Handle notification icon tap
-          },
-        ),
         actions: [
           IconButton(
-            icon: Icon(Icons.menu, color: Color(0xff010402)),
+            icon: Icon(FontAwesomeIcons.bell, color: Color(0xff010402)),
             onPressed: () {
               // Handle hamburger menu tap
             },
@@ -248,7 +243,12 @@ class MainScreen extends StatelessWidget {
                     IconText(
                       icon: FontAwesomeIcons.gift,
                       text: 'Rewards',
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SideMenu()),
+                        );
+                      },
                     ),
                   ],
                 ),

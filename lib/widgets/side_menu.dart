@@ -19,67 +19,76 @@ class _SideMenuState extends State<SideMenu> {
   @override
   Widget build(BuildContext context) {
     final ap = Provider.of<AuthProvider>(context, listen: false);
-    return Scaffold(
-      body: Container(
-        width: 288,
-        height: double.infinity,
-        color: Color(0xff8CEEB3),
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ListTile(
-                leading: CircleAvatar(
-                  child: Image.network(ap.userModel.profilePic),
-                ),
-                title: Text(
-                  ap.userModel.name.toUpperCase(),
-                  style: TextStyle(
-                    color: Color(0xff010402),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+    return Drawer(
+      child: Scaffold(
+        body: Container(
+          width: 400,
+          height: double.infinity,
+          color: Color(0xff8CEEB3),
+          child: SafeArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ListTile(
+                  leading: CircleAvatar(
+                    child: ClipOval(
+                      child: Image.network(
+                        ap.userModel.profilePic,
+                        fit: BoxFit.cover,
+                        width: 50,
+                        height: 50,
+                      ),
+                    ),
+                  ),
+                  title: Text(
+                    ap.userModel.name.toUpperCase(),
+                    style: TextStyle(
+                      color: Color(0xff010402),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 24, top: 32, bottom: 16),
-                child: Text(
-                  "Browse",
-                  style: TextStyle(
-                    color: Color(0xff010402),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.only(left: 24, top: 32, bottom: 16),
+                  child: Text(
+                    "Browse",
+                    style: TextStyle(
+                      color: Color(0xff010402),
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              ...sideMenus.map(
-                (menu) => SideMenuTile(
-                  menu: menu,
-                  riveonInit: (artboard) {
-                    StateMachineController? controller =
-                        RiveUtils.getRiveController(
-                      artboard,
-                      stateMachineName: menu.stateMachineName,
-                    );
-                    if (controller != null) {
-                      menu.input = controller.findSMI("active") as SMIBool?;
-                    }
-                  },
-                  press: () {
-                    if (menu.input != null) {
-                      menu.input!.change(true);
-                      Future.delayed(const Duration(seconds: 1), () {
-                        menu.input!.change(false);
-                      });
-                      setState(() {
-                        selectedMenu = menu;
-                      });
-                    }
-                  },
-                  isActive: selectedMenu == menu,
+                ...sideMenus.map(
+                  (menu) => SideMenuTile(
+                    menu: menu,
+                    riveonInit: (artboard) {
+                      StateMachineController? controller =
+                          RiveUtils.getRiveController(
+                        artboard,
+                        stateMachineName: menu.stateMachineName,
+                      );
+                      if (controller != null) {
+                        menu.input = controller.findSMI("active") as SMIBool?;
+                      }
+                    },
+                    press: () {
+                      if (menu.input != null) {
+                        menu.input!.change(true);
+                        Future.delayed(const Duration(seconds: 1), () {
+                          menu.input!.change(false);
+                        });
+                        setState(() {
+                          selectedMenu = menu;
+                        });
+                      }
+                    },
+                    isActive: selectedMenu == menu,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

@@ -46,10 +46,16 @@ class SideMenuTile extends StatelessWidget {
               leading: SizedBox(
                 height: 34,
                 width: 34,
-                child: RiveAnimation.asset(
-                  menu.src,
-                  artboard: menu.artboard,
-                  onInit: riveonInit,
+                child: ColorFiltered(
+                  colorFilter: ColorFilter.mode(
+                    const Color(0xff010402), // Replace with your desired color
+                    BlendMode.srcIn,
+                  ),
+                  child: RiveAnimation.asset(
+                    menu.src,
+                    artboard: menu.artboard,
+                    onInit: riveonInit,
+                  ),
                 ),
               ),
               title: Text(
